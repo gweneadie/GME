@@ -90,22 +90,8 @@ initdata[miss.pm, c("PMra", "PMdec")] = mean( na.omit(mydata$PMra) )/10
 # all initial parameters (both nuisance and model) need to be in a list
 init.list = lapply(X = par.init, FUN = function(x, idata) list( x, idata ), idata=initdata )
 
-# calculate the parameters for prior on alpha, using the  unused data
-# get the tracers that are missing line-of-sight velocities and that are beyond the minimum radius (this could be changed if using different set of other data) 
-TracerNotUsed = tracerdata[ is.na(tracerdata$Vlos) & tracerdata$Rgc>rmin, ]
-# get the r values of these unused data
-rvals = TracerNotUsed$Rgc[TracerNotUsed$Rgc>rmin]
-# how many are there
-nextra = length(rvals)
-# calculate and set the hyperparameter values
-nco = sum( log(rvals/rmin))
-myc=1e-3
-p=1e-3
-mu=(myc+nextra)/(nco+p)
-# assign the hyperparameter values to a single object
-apriorpars = c(rmin, myc, p, nextra, nco)
-
-
+# source script that sets hyperprior on alpha
+source("script_set-hyperpriors.r")
 
 # part of identifying filename that will be used in outputs
 filename = paste(file.name, model.name, "rmin", rminname, sep="-")
