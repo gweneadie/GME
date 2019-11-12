@@ -3,7 +3,7 @@
 # calculate the hyper-parameters for prior on alpha, using data from *other* studies (e.g. simulations) not used in the present analysis.
 
 # uncomment and put in appropriate filename to load the data
-# TracerNotUsed = readRDS("../Data/filename")
+# TracerNotUsed = readRDS("../DataRFormat/GCdata_noSgrGCsnoCraternoFSR_GaiaHSTPROMO_2019-02-27_2019-02-27")
 
 # get the r values of these unused data and only use ones beyond rmin
 rvals = TracerNotUsed$Rgc[TracerNotUsed$Rgc>rmin]
