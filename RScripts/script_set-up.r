@@ -90,8 +90,17 @@ initdata[miss.pm, c("PMra", "PMdec")] = mean( na.omit(mydata$PMra) )/10
 # all initial parameters (both nuisance and model) need to be in a list
 init.list = lapply(X = par.init, FUN = function(x, idata) list( x, idata ), idata=initdata )
 
-# source script that sets hyperprior on alpha
-source("script_set-hyperpriors.r")
+# parameters for prior on alpha, using unused data
+TracerNotUsed = tracerdata[ is.na(tracerdata$Vlos) & tracerdata$Rgc>rmin, ]
+rvals = TracerNotUsed$Rgc[TracerNotUsed$Rgc>rmin]
+nextra = length(rvals)
+nco = sum( log(rvals/rmin))
+rseq = seq(0,4, length.out=1e3)
+myc=1e-3
+p=1e-3
+mu=(myc+nextra)/(nco+p)
+apriorpars = c(rmin, myc, p, nextra, nco)
+
 
 # part of identifying filename that will be used in outputs
 filename = paste(file.name, model.name, "rmin", rminname, sep="-")
