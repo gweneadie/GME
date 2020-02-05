@@ -42,6 +42,9 @@
 # ePMdec(arcsec/yr)
 # eVlos (km/s)
 # eRgc  (kpc)
+# Xgc   (kpc)
+# Ygc   (kpc)
+# Zgc   (kpc)
 
 
 # propsd.PMVlos   list of covariance matrices for proper motion and line-of-sight velocity jumping distribution
@@ -76,6 +79,7 @@ HierGalacticMCMC = function( init, dat, DF, pot, n.pars, priors, propDF, N, logP
   TMatrixVels.list = vector("list", length=n.dat)
 
   for(i in 1:n.dat){
+   
     Amatrix.temp = Amatrix(RA = dat$RA[i], DEC = dat$DEC[i])
     Bmatrix.list[[i]] = Tmatrix %*% Amatrix.temp
     TMatrixVels.list[[i]] = Transform.Matrix(dat = dat[i, ])
