@@ -19,16 +19,18 @@ source("functions_priors.r")
 source("GME-hierarchical.r")
 
 # minimum distance tracer objects must have from the center of the Galaxy to be included in the analysis
-rmin = 20
-rminname = "20"
+rmin = 10
+rminname = "10"
 
 # name of the data file that will be used (this is used later in naming conventions)
 file.name = "GCdata_noSgrGCsnoCraternoFSR_GaiaHSTPROMO_2019-02-27_2019-02-27"
 # file.name = "GCdata_noSgrGCsnoCraternoFSR_Vasiliev_2019-02-27_2019-02-27"
 
+
 # load data that is already in RDS format
 tracerdata = readRDS( paste("../DataRFormat/", file.name, sep="") )
 
+tracerdata = readRDS( paste("../../Data-tracers/TracerData_Rformat/", file.name, sep=""))
 
 # Define the model you want to use and provide the names of the functions that will get called
 model.name = "Deason"  
@@ -41,7 +43,7 @@ npars = 4
 
 # bounds for single uniform prior function
 phiobounds = c(1,200)    # phi_o
-bbounds = c(-0.5,1)      # beta
+bbounds = c(-1,1)      # beta
 
 # gamma parameter mean and variance
 gammasd = 0.06
@@ -56,7 +58,7 @@ myRgcbounds = c(0, 3e2)     # kpc
 
 # initial values for parameters: Phi_o, gamma, alpha, beta
 # This is currently set up to run 3 independent Markov Chains---- that's why there are 3 sets of parameter values, the first set being Phi_o=150, gamma = 0.4, alpha = 3.2, and beta = 0.5.
-start.list = list( c(150, 0.4, 3.2, 0.5), c(50, 0.35, 3.1, 0), c(75, 0.42, 3.3, 0.4) )
+start.list = list( c(100, 0.4, 3.2, 0.5), c(50, 0.35, 3.1, 0), c(80, 0.42, 3.6, 0.4))
 
 # these were the values used for Gaia and HSTPROMO
 
@@ -101,6 +103,7 @@ p=1e-3
 mu=(myc+nextra)/(nco+p)
 apriorpars = c(rmin, myc, p, nextra, nco)
 
+apriorpars = c(10, 0.001, 0.001, 3.0, 4.5)
 
 # part of identifying filename that will be used in outputs
 filename = paste(file.name, model.name, "rmin", rminname, sep="-")
