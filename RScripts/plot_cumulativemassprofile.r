@@ -2,8 +2,8 @@
 library(ggplot2)
 library(grid)
 library(emdbook)
-source("../../../../DeasonModel/Rscripts/plotcredreg-Deason.r")
-source("../../../../DeasonModel/Rscripts/deason.r")
+source("function_plot-Mr-credreg.r")
+source("functions_deason.r")
 
 source("script_set-up.r")
 
