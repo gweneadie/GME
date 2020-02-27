@@ -5,7 +5,7 @@ library(coda)
 library(xtable)
 
 source("function_credregions.r")
-source("deason.r")
+source("functions_deason.r")
 
 
 # load final chains
