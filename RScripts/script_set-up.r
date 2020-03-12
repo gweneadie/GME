@@ -30,8 +30,6 @@ file.name = "GCdata_noSgrGCsnoCraternoFSR_GaiaHSTPROMO_2019-02-27_2019-02-27"
 # load data that is already in RDS format
 tracerdata = readRDS( paste("../DataRFormat/", file.name, sep="") )
 
-tracerdata = readRDS( paste("../../Data-tracers/TracerData_Rformat/", file.name, sep=""))
-
 # Define the model you want to use and provide the names of the functions that will get called
 model.name = "Deason"  
 modelDF = NULL
