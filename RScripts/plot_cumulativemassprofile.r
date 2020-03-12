@@ -41,7 +41,7 @@ fillcolour = alpha("black", c(0.3, 0.2, 0.1))
 mars = c(5,5,2,2) # <---- USE THESE IF YOU DON'T WANT THE LEGEND
 
 #-------------- make cumulative mass profile plot
-pdf(file = paste("../Manuscript/plot_cumulativemassprofile-", filename, "_", Sys.Date(), ".pdf", sep=""), useDingbats = FALSE, height=6, width=8)
+pdf(file = paste("../Figures/plot_cumulativemassprofile-", filename, "_", Sys.Date(), ".pdf", sep=""), useDingbats = FALSE, height=6, width=8)
 
 # par( mar=mars, oma = outermars, xpd=TRUE)  #xpd = TRUE makes drawing outside margins possible
 par(mfrow=c(1,2))
