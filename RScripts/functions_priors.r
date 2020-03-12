@@ -75,3 +75,14 @@ r.inverseParetocdf = function(x, A=2.5, xmin){  xmin/((1-x)^(1/A)) }
 # Pareto distribution function
 Paretopdf = function(x, A=2.5, xmin){ A*xmin^A/x^(A+1) }
 
+
+############ General gamma prior
+
+gamma.prior <- function( pars, ppars ){
+  
+  eta = pars - 3
+  
+  dgamma(x = eta, shape = ppars[1], rate = ppars[2] )
+  
+}
+
