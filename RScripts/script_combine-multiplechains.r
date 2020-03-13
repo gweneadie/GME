@@ -7,7 +7,6 @@ source("script_set-up.r")
 
 adaptiveDate = "2019-04-29"
 burninDate = "2019-04-29"
-chaindate = "2019-04-29"
 hiermcmcDate = "2019-04-29"
 
 nfiles = 3
@@ -57,7 +56,7 @@ for( j in 1:length(rmins) ){
   }
   
   # save the combined chain
-    saveRDS(object = chain, file = paste("../Results/", beginname, "-", nfiles, "-chainscombined", "-", filename, "-", adaptiveDate, "_", burninDate, "_", chaindate, "_", hiermcmcDate, "_", Sys.Date(), sep=""))
+    saveRDS(object = chain, file = paste("../Results/", beginname, "-", nfiles, "-chainscombined", "-", filename, "-", adaptiveDate, "_", burninDate, "_", hiermcmcDate, "_", Sys.Date(), sep=""))
     
   rm(chain)
 
